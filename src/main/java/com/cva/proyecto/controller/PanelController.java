@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PanelController {
 
-    @RequestMapping("/dashboard")
+    @RequestMapping(value = {"/dashboard"})
     public String panel(){
         return "dashboard";
     }
@@ -15,5 +15,10 @@ public class PanelController {
     public String inicio(){
         return "index";
     }
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
+    }
+
 
 }

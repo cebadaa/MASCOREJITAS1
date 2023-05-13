@@ -15,7 +15,7 @@ body{
   left: 0;
   height: 100%;
   width: 260px;
-  background: #281b33;
+  background: #24d278;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -170,7 +170,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #281b33;
+  background: #24d278;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -190,7 +190,7 @@ body{
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #60438b;
+  background: #24d278;
   transition: all 0.5s ease;
 }
 .barra.cerrar .perfil img{
@@ -231,7 +231,7 @@ body{
 }
 .home .homecont .bx-menu,
 .home .homecont .texto{
-  color: #11101d;
+  color: #24d278;
   font-size: 35px;
 }
 .home .homecont .bx-menu{
