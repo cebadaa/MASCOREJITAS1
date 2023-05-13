@@ -12,3 +12,19 @@ console.log(barraBtn);
 barraBtn.addEventListener("click", ()=>{
     barra.classList.toggle("cerrar");
 });
+
+function mostrarTabla(tabla) {
+    var tablaPerrosContainer = document.getElementById("tablaperros");
+    var tablaPanelContainer = document.getElementById("tablapanel");
+    
+    if (tabla === 'perros') {
+        tablaPerrosContainer.style.display = "block";
+        tablaPanelContainer.style.display = "none";
+    } else if (tabla === 'panel') {
+        tablaPerrosContainer.style.display = "none";
+        tablaPanelContainer.style.display = "block";
+    } else {
+        tablaPerrosContainer.style.display = "none";
+        tablaPanelContainer.style.display = "none";
+    }
+    }
