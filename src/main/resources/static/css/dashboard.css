@@ -1,0 +1,270 @@
+/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  overflow: hidden;
+}
+.barra{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 260px;
+  background: #281b33;
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+.barra.cerrar{
+  width: 78px;
+}
+.barra .detalleslogo{
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.barra .detalleslogo i{
+  font-size: 30px;
+  color: #fff;
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+}
+.barra .detalleslogo .logonom{
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  transition-delay: 0.1s;
+}
+.barra.cerrar .detalleslogo .logonom{
+  transition-delay: 0s;
+  opacity: 0;
+  pointer-events: none;
+}
+.barra .links{
+  height: 100%;
+  padding: 30px 0 150px 0;
+  overflow: auto;
+}
+.barra.cerrar .links{
+  overflow: visible;
+}
+.barra .links::-webkit-scrollbar{
+  display: none;
+}
+.barra .links li{
+  position: relative;
+  list-style: none;
+  transition: all 0.4s ease;
+}
+.barra .links li:hover{
+  background: #60438b;
+}
+.barra .links .iconlinks{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.barra.cerrar .links li .iconlinks{
+  display: block
+}
+.barra .links li i{
+  height: 50px;
+  min-width: 78px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.barra .links li.mostrar i.arrow{
+  transform: rotate(-180deg);
+}
+.barra.cerrar .links i.arrow{
+  display: none;
+}
+.barra .links li a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.barra .links li a .linknom{
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  transition: all 0.4s ease;
+}
+.barra.cerrar .links li a .linknom{
+  opacity: 0;
+  pointer-events: none;
+}
+.barra .links li .submenu{
+  padding: 6px 6px 14px 80px;
+  margin-top: -10px;
+  background: #60438b;
+  display: none;
+}
+.barra .links li.mostrar .submenu{
+  display: block;
+}
+.barra .links li .submenu a{
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 0;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+.barra .links li .submenu a:hover{
+  opacity: 1;
+}
+.barra.cerrar .links li .submenu{
+  position: absolute;
+  left: 100%;
+  top: -10px;
+  margin-top: 0;
+  padding: 10px 20px;
+  border-radius: 0 6px 6px 0;
+  opacity: 0;
+  display: block;
+  pointer-events: none;
+  transition: 0s;
+}
+.barra.cerrar .links li:hover .submenu{
+  top: 0;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+}
+.barra .navlinks li .submenu .linknom{
+  display: none;
+}
+.barra.cerrar .links li .submenu .linknom{
+  font-size: 18px;
+  opacity: 1;
+  display: block;
+}
+.barra .links li .submenu.blank{
+  opacity: 1;
+  pointer-events: auto;
+  padding: 3px 20px 6px 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+.barra .links li:hover .submenu.blank{
+  top: 50%;
+  transform: translateY(-50%);
+}
+.barra .perfil{
+  position: fixed;
+  bottom: 0;
+  width: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #281b33;
+  padding: 12px 0;
+  transition: all 0.5s ease;
+}
+.barra.cerrar perfil{
+  background: none;
+}
+.barra.cerrar .perfil{
+  width: 78px;
+}
+.barra .perfil .contenido{
+  display: flex;
+  align-items: center;
+}
+.barra .perfil img{
+  height: 52px;
+  width: 52px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 0 14px 0 12px;
+  background: #60438b;
+  transition: all 0.5s ease;
+}
+.barra.cerrar .perfil img{
+  padding: 10px;
+}
+.barra .perfil .perfilnom,
+.barra .perfil .trabajo{
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.barra.cerrar .perfil i,
+.barra.cerrar .perfil .perfilnom,
+.barra.cerrar .perfil .trabajo{
+  display: none;
+}
+.barra .perfil .trabajo{
+  font-size: 12px;
+}
+.home{
+  position: relative;
+  background: #E4E9F7;
+  height: 100vh;
+  left: 260px;
+  width: calc(100% - 260px);
+  transition: all 0.5s ease;
+  padding: 12px;
+}
+.barra.cerrar ~ .home{
+  left: 78px;
+  width: calc(100% - 78px);
+}
+.homecont{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.home .homecont .bx-menu,
+.home .homecont .texto{
+  color: #11101d;
+  font-size: 35px;
+}
+.home .homecont .bx-menu{
+  cursor: pointer;
+  margin-right: 10px;
+}
+.home .homecont .texto{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 400px){
+  .barra{
+    width: 240px;
+  }
+  .barra.cerrar{
+    width: 78px;
+  }
+  .barra .perfil{
+    width: 240px;
+  }
+  .barra.cerrar .perfil{
+    background: none;
+  }
+  .barra .perfil{
+    width: 78px;
+  }
+  .home{
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+  .barra.cerrar ~ .home{
+    left: 78px;
+    width: calc(100% - 78px);
+  }
+}
