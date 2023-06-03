@@ -3,6 +3,7 @@ package com.cva.proyecto.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cva.proyecto.model.entidad.Cliente;
@@ -25,4 +26,19 @@ public class ClientesController {
         clienteService.guardarCliente(cliente);
         return "redirect:/clientes/";
     }
+    @RequestMapping("/eliminar/{id}")
+    public String eliminar(Cliente cliente){
+        clienteService.eliminarCliente(cliente);
+        return "redirect:/clientes/";
+    }
+    @RequestMapping("/editar/{id}")
+    public String editar(@PathVariable(value = "id") Long id, Model model){
+        Cliente cliente = new Cliente();
+        cliente = clienteService.buscarCliente(id);
+        model.addAttribute("cliente", cliente);
+        model.addAttribute("titulo", "Editar Cliente");
+        model.addAttribute("listarClientes", clienteService.mostrarClientes());
+        return "clientes/index";
+    }
+
 }

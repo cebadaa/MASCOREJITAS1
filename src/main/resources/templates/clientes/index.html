@@ -19,6 +19,7 @@
                 </div>
                 <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
                     <div class="card-body">
+                        <input type="hidden" th:field="*{id}">
                         <div class="row">
                         <div class="col-md-6 mb-3">
                             <label>Nombre del Cliente:</label>
@@ -41,6 +42,7 @@
                         </div>
                         <div class="row mt-3">
                         <div class="col-12 text-center">
+                            <button type="button" class="btn " onclick="window.location.href = `http://localhost:8080/clientes/` " style="background-color: #baa1e2;"> Nuevo Cliente</button>
                             <button type="submit" class="btn " style="background-color: #baa1e2;">
                                 <i class="fa-solid fa-floppy-disk"></i>
                                 Guardar Cliente</button>
@@ -63,14 +65,18 @@
                                     <th>Direccion</th>
                                     <th>telefono</th>
                                     <th>correo</th>
+                                    <th class="text-center">Editar</th>
+                                    <th class="text-center">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="item: ${listarClientes}">
-                                    <th th:text="${item.nombre}"></th>
-                                    <th th:text="${item.direccion}"></th>
-                                    <th th:text="${item.telefono}"></th>
-                                    <th th:text="${item.correo}"></th>
+                                    <td th:text="${item.nombre}"></td>
+                                    <td th:text="${item.direccion}"></td>
+                                    <td th:text="${item.telefono}"></td>
+                                    <td th:text="${item.correo}"></td>
+                                    <td class="text-center"><a th:href="@{/clientes/editar/} + ${item.id}" class="btn" style="background-color: #84c4e9;">Editar</a> </td>
+                                    <td class="text-center"><a th:href="@{/clientes/eliminar/} + ${item.id}" class="btn " style="background-color: #e93535; color: white;" onclick="return confirm('Desea eliminar la categoria')">Eliminar</a> </td>
                                 </tr>
                             </tbody>
                         </table>
