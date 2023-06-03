@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PanelController {
-
+    //localhost:8080/
     @RequestMapping(value = {"/dashboard"})
     public String panel(){
         return "dashboard";

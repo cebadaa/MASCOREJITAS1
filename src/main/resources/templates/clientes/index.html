@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head th:replace="layouts/plantilla :: cabecera">
+
+    </head>
+<body>
+    <div th:replace="layouts/plantilla :: barra">
+        
+    </div>
+
+    <section class="home">
+        <div class="homecont">
+            <i class='bx bx-menu' ></i>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                  Registro de Clientes
+                </div>
+                <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+                    <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6 mb-3">
+                              <label>Nombre del Cliente:</label>
+                              <input th:field="*{nombre}" type="text" class="form-control"/>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                              <label>Direccion del Cliente:</label>
+                              <input th:field="*{direccion}" type="text" class="form-control"/>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label>Telefono del Cliente:</label>
+                                <input th:field="*{telefono}" type="text" class="form-control"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Correo del Cliente:</label>
+                                <input th:field="*{correo}" type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-12 text-center">
+                              <button type="submit" class="btn btn-success">
+                                  <i class="fa-solid fa-floppy-disk"></i>
+                                  Guardar Cliente</button>
+                          </div>
+                        </div>
+                      </div>
+                </form>
+              </div>
+        </div>
+        </section>
+    <div th:replace="layouts/plantilla :: librerias">
+
+    </div>
+
+</body>
+</html>
