@@ -6,22 +6,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cva.proyecto.model.entidad.Cliente;
-import com.cva.proyecto.model.service.IProductoService;
+import com.cva.proyecto.model.service.IClienteService;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClientesController {
     @Autowired
-    private IProductoService productoService;
+    private IClienteService clienteService;
     @RequestMapping("/")
     public String inicio(Model model){
         Cliente cliente=new Cliente();
         model.addAttribute("cliente", cliente);
+        model.addAttribute("listarClientes", clienteService.mostrarClientes());
         return "clientes/index";
     }
     @RequestMapping("/guardar")
     public String guardar(Cliente cliente){
-        productoService.guardarCliente(cliente);
+        clienteService.guardarCliente(cliente);
         return "redirect:/clientes/";
     }
 }

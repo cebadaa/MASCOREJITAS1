@@ -15,34 +15,60 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                  Registro de Clientes
+                Registro de Clientes
                 </div>
                 <form th:action="@{/trabajadores/guardar}" th:object="${trabajador}" method="post">
                     <div class="card-body">
                         <div class="row">
-                          <div class="col-md-4 mb-3">
-                              <label>Nombre del Trabajador:</label>
-                              <input th:field="*{nombre}" type="text" class="form-control"/>
-                          </div>
-                          <div class="col-md-4 mb-3">
-                              <label>Cargo del Trabajador:</label>
-                              <input th:field="*{cargo}" type="text" class="form-control"/>
-                          </div>
-                          <div class="col-md-4 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <label>Nombre del Trabajador:</label>
+                            <input th:field="*{nombre}" type="text" class="form-control"/>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>Cargo del Trabajador:</label>
+                            <input th:field="*{cargo}" type="text" class="form-control"/>
+                        </div>
+                        <div class="col-md-4 mb-3">
                             <label>Salario del Trabajador:</label>
                             <input th:field="*{salario}" type="text" class="form-control"/>
                         </div>
                         </div>
                         <div class="row mt-3">
-                          <div class="col-12 text-center">
-                              <button type="submit" class="btn btn-success">
-                                  <i class="fa-solid fa-floppy-disk"></i>
-                                  Guardar Trabajador</button>
-                          </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa-solid fa-floppy-disk"></i>
+                                Guardar Trabajador</button>
                         </div>
-                      </div>
+                        </div>
+                    </div>
                 </form>
-              </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    trabajadores Registrados
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Cargo</th>
+                                    <th>Sueldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item: ${listarTrabajador}">
+                                    <th th:text="${item.nombre}"></th>
+                                    <th th:text="${item.cargo}"></th>
+                                    <th th:text="${item.salario}"></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         </section>
     <div th:replace="layouts/plantilla :: librerias">
