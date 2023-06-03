@@ -23,5 +23,14 @@ public class TrabajadorServiceImp implements ITrabajadorService{
     public List<Trabajador> mostrarTrabajador() {
         return(List<Trabajador>) trabajadorDAO.findAll();
     }
+
+    @Override
+    public void eliminarTrabajador(Trabajador trabajador) {
+        trabajadorDAO.delete(trabajador);
+    }
     
+    @Override
+    public Trabajador buscarTrabajador(Long id) {
+        return trabajadorDAO.findById(id).orElse(null);
+    }
 }
