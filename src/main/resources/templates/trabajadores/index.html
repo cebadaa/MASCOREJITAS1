@@ -14,8 +14,8 @@
         </div>
         <div class="container">
             <div class="card">
-                <div class="card-header">
-                Registro de Clientes
+                <div class="card-header" style="background-color: #9264d6; color: white;">
+                Registrar Trabajadores
                 </div>
                 <form th:action="@{/trabajadores/guardar}" th:object="${trabajador}" method="post">
                     <div class="card-body">
@@ -35,7 +35,7 @@
                         </div>
                         <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-success">
+                            <button type="submit" class="btn btn-success" style="background-color: #baa1e2;">
                                 <i class="fa-solid fa-floppy-disk"></i>
                                 Guardar Trabajador</button>
                         </div>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #9264d6; color: white;">
                     trabajadores Registrados
                 </div>
                 <div class="card-body">
