@@ -106,7 +106,8 @@
           Productos
         </h2>
       </div>
-      <div class="brand_container layout_padding2" th:each="item: ${listarTrabajador}">
+      <div class="brand_container layout_padding2">
+      <div class="col-sm-3" th:each="item: ${listarTrabajador}">  
         <div class="box">
           <a href="">
             <div class="new">
@@ -127,6 +128,7 @@
             </div>
           </a>
         </div>
+      </div>
       </div>
       <a href="" class="brand-btn">
         Ver Mas
