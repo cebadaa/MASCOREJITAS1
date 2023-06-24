@@ -103,71 +103,26 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Marcas Preferidas
+          Productos
         </h2>
       </div>
-      <div class="brand_container layout_padding2">
+      <div class="brand_container layout_padding2" th:each="item: ${listarTrabajador}">
         <div class="box">
           <a href="">
             <div class="new">
               <h5>
-                Agotado
+                Estado
               </h5>
             </div>
             <div class="img-box">
               <img src="images/slider-img.png" alt="">
             </div>
             <div class="detail-box">
-              <h6 class="price">
+              <h6 class="price" th:text="${item.salario}">
                 S/.20
               </h6>
-              <h6>
+              <h6 th:text="${item.nombre}">
                 Chair
-              </h6>
-            </div>
-          </a>
-        </div>
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="images/slider-img.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6 class="price">
-                S/.20
-              </h6>
-              <h6>
-                Carrefour - Comida para Hamsters
-              </h6>
-            </div>
-          </a>
-        </div>
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="images/slider-img.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6 class="price">
-                S/.20
-              </h6>
-              <h6>
-                Carrefour - Comida para Hamsters
-              </h6>
-            </div>
-          </a>
-        </div>
-        <div class="box">
-          <a href="">
-            <div class="img-box">
-              <img src="images/slider-img.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h6 class="price">
-                S/.20
-              </h6>
-              <h6>
-                Carrefour - Comida para Hamsters
               </h6>
             </div>
           </a>
