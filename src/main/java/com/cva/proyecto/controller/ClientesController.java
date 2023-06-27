@@ -18,6 +18,7 @@ public class ClientesController {
     public String inicio(Model model){
         Cliente cliente=new Cliente();
         model.addAttribute("cliente", cliente);
+        model.addAttribute("titulo", "Registrar Nuevo Cliente");
         model.addAttribute("listarClientes", clienteService.mostrarClientes());
         return "clientes/index";
     }

@@ -12,10 +12,10 @@
         <div class="homecont">
             <i class='bx bx-menu' ></i>
         </div>
-        <div class="container">
+        <div class="container-fluid px-4">
             <div class="card">
                 <div class="card-header" style="background-color: #9264d6; color: white;">
-                Registro de Clientes
+                    <span th:text="${titulo}"></span>
                 </div>
                 <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
                     <div class="card-body">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <button type="button" class="btn " onclick="window.location.href = `http://localhost:8080/clientes/` " style="background-color: #baa1e2;"> Nuevo Cliente</button>
+                            <button type="button" class="btn " onclick="limpiarCliente();" style="background-color: #baa1e2;"> Nuevo Cliente</button>
                             <button type="submit" class="btn " style="background-color: #baa1e2;">
                                 <i class="fa-solid fa-floppy-disk"></i>
                                 Guardar Cliente</button>
@@ -76,7 +76,7 @@
                                     <td th:text="${item.telefono}"></td>
                                     <td th:text="${item.correo}"></td>
                                     <td class="text-center"><a th:href="@{/clientes/editar/} + ${item.id}" class="btn" style="background-color: #84c4e9;">Editar</a> </td>
-                                    <td class="text-center"><a th:href="@{/clientes/eliminar/} + ${item.id}" class="btn " style="background-color: #e93535; color: white;" onclick="return confirm('Desea eliminar la categoria')">Eliminar</a> </td>
+                                    <td class="text-center"><a th:href="@{/clientes/eliminar/} + ${item.id}" class="btn " style="background-color: #e93535; color: white;" onclick="return confirm('Desea eliminar al cliente')">Eliminar</a> </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -88,6 +88,7 @@
     <div th:replace="layouts/plantilla :: librerias">
 
     </div>
+    <script th:src="@{/js/libreriaTodo.js}"></script> 
 
 </body>
 </html>

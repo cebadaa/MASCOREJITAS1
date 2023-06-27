@@ -11,7 +11,7 @@ import com.cva.proyecto.model.entidad.Trabajador;
 @Service
 public class TrabajadorServiceImp implements ITrabajadorService{
 
-    @Autowired
+    @Autowired 
     private ITrabajadorDAO trabajadorDAO;
 
     @Override
@@ -21,14 +21,14 @@ public class TrabajadorServiceImp implements ITrabajadorService{
 
     @Override
     public List<Trabajador> mostrarTrabajador() {
-        return(List<Trabajador>) trabajadorDAO.findAll();
+        return (List<Trabajador>)trabajadorDAO.findAll();
     }
 
     @Override
     public void eliminarTrabajador(Trabajador trabajador) {
         trabajadorDAO.delete(trabajador);
     }
-    
+
     @Override
     public Trabajador buscarTrabajador(Long id) {
         return trabajadorDAO.findById(id).orElse(null);
