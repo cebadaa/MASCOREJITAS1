@@ -30,19 +30,22 @@
         </ul>
         </li>
         <li>
-        <div class="iconlinks">
-            <a href="#">
-            <i class='bx bx-collection' ></i>
-            <span class="linknom ">Categoria</span>
+            <a th:href="@{/categoria/}">
+                <i class='bx bx-collection'></i>
+                <span class="linknom" th:href="@{/categoria/}">CATEGORIAS</span>
             </a>
-            <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="submenu">
-            <li><a class="linknom" href="#">CATEGORIA</a></li>
-            <li><a href="#" >PERROS</a></li>
-            <li><a href="#">GATOS</a></li>
-            <li><a href="#">OTROS</a></li>
-        </ul>
+            <ul class="submenu blank">
+                <li><a class="linknom" th:href="@{/categoria/}">CATEGORIAS</a></li>
+            </ul>
+        </li>
+        <li>
+            <a th:href="@{/producto/}">
+                <i class='bx bx-collection'></i>
+                <span class="linknom" th:href="@{/producto/}">PRODUCTOS</span>
+            </a>
+            <ul class="submenu blank">
+                <li><a class="linknom" th:href="@{/producto/}">PRODUCTOS</a></li>
+            </ul>
         </li>
         <li>
         <div class="iconlinks">
@@ -71,10 +74,10 @@
         <li>
         <a th:href="@{/clientes/}">
             <i class='bx bxs-user-rectangle'></i>
-            <span class="linknom" th:href="@{/trabajadores/}">CLIENTES</span>
+            <span class="linknom" th:href="@{/clientes/}">CLIENTES</span>
         </a>
         <ul class="submenu blank">
-            <li><a class="linknom" th:href="@{/trabajadores/}">CLIENTES</a></li>
+            <li><a class="linknom" th:href="@{/clientes/}">CLIENTES</a></li>
         </ul>
         </li>
         <li>

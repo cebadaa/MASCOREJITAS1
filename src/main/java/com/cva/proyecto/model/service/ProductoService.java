@@ -1,26 +1,38 @@
 package com.cva.proyecto.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cva.proyecto.model.dao.IClienteDAO;
-import com.cva.proyecto.model.dao.ITrabajadorDAO;
-import com.cva.proyecto.model.entidad.Cliente;
-import com.cva.proyecto.model.entidad.Trabajador;
+import com.cva.proyecto.model.dao.IProductoDAO;
+import com.cva.proyecto.model.entidad.Producto;
 
 @Service
 public class ProductoService implements IProductoService {
     @Autowired
-    private ITrabajadorDAO trabajadorDAO;
+    private IProductoDAO productoDAO;
+
     @Override
-    public void guardarTrabajador(Trabajador trabajador) {
-        trabajadorDAO.save(trabajador);
-    }    
-    @Autowired
-    private IClienteDAO clienteDAO;
+    public void guardarProducto(Producto producto) {
+        productoDAO.save(producto);
+    }
+
     @Override
-    public void guardarCliente(Cliente cliente) {
-        clienteDAO.save(cliente);
+    public List<Producto> listarProductos() {
+        return productoDAO.findAllByOrderByNombreAsc();
+    }
+
+    @Override
+    public String eliminarProducto(Long id) {
+        String rpta = "";
+        try{
+            productoDAO.deleteById(id);
+            rpta = "Se eliminó el producto correctamente";
+        }catch(Exception e ){
+            rpta = e.getMessage();
+        }
+        return rpta;
     }
     
 }
