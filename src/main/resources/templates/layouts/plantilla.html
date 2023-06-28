@@ -48,19 +48,13 @@
             </ul>
         </li>
         <li>
-        <div class="iconlinks">
-            <a href="#">
-            <i class='bx bx-message-dots'></i>
-            <span class="linknom">PEDIDOS</span>
+            <a th:href="@{/pedido/}">
+                <i class='bx bx-message-dots'></i>
+                <span class="linknom" th:href="@{/pedido/}">PEDIDOS</span>
             </a>
-            <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-        <ul class="submenu">
-            <li><a class="linknom" href="#">PEDIDOS</a></li>
-            <li><a href="#" onclick="mostrarTabla('perros')">PERROS</a></li>
-            <li><a href="#">GATOS</a></li>
-            <li><a href="#">OTROS</a></li>
-        </ul>
+            <ul class="submenu blank">
+                <li><a class="linknom" th:href="@{/pedido/}">PEDIDOS</a></li>
+            </ul>
         </li>
         <li>
         <a th:href="@{/trabajadores/}">

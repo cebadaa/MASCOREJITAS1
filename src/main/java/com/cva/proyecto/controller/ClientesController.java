@@ -28,8 +28,8 @@ public class ClientesController {
         return "redirect:/clientes/";
     }
     @RequestMapping("/eliminar/{id}")
-    public String eliminar(Cliente cliente){
-        clienteService.eliminarCliente(cliente);
+    public String eliminar(@PathVariable(value = "id") Long id){
+        clienteService.eliminarCliente(id);
         return "redirect:/clientes/";
     }
     @RequestMapping("/editar/{id}")

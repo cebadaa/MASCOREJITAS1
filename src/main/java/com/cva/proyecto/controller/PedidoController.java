@@ -8,40 +8,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.cva.proyecto.model.entidad.Producto;
-import com.cva.proyecto.model.service.ICategoriaService;
-import com.cva.proyecto.model.service.IProductoService;
-
+import com.cva.proyecto.model.entidad.Pedido;
+import com.cva.proyecto.model.service.IClienteService;
+import com.cva.proyecto.model.service.IPedidoService;
 
 @Controller
-@RequestMapping("/producto")
-public class ProductoController {
+@RequestMapping("/pedido")
+public class PedidoController {
     @Autowired
-    private ICategoriaService categoriaService;
-
+    private IPedidoService pedidoService;
     @Autowired
-    private IProductoService productoService;
+    private IClienteService clienteService;
 
     @RequestMapping("/")
     public String inicio(Model model){
-        Producto producto = new Producto();
-        model.addAttribute("producto", producto);
-        model.addAttribute("listaProductos", productoService.listarProductos());
+        Pedido pedido = new Pedido();
+        model.addAttribute("pedido", pedido);
+        model.addAttribute("listaPedidos", pedidoService.listarPedidos());
         /*Metodo Spring */
-        model.addAttribute("listaCategorias", categoriaService.mostrarCatOrdenAsc());
-        return "producto/index";
+        model.addAttribute("listaClientes", clienteService.mostrarCliOrdenAsc());
+        return "pedido/index";
     }
 
     @RequestMapping(value="/form", method = RequestMethod.POST)
-    public String guardar(Producto producto){
-        productoService.guardarProducto(producto);
-        return "redirect:/producto/";
+    public String guardar(Pedido pedido){
+        pedidoService.guardarPedido(pedido);
+        return "redirect:/pedido/";
     }
 
     @RequestMapping("/eliminar/{id}")
     public String eliminar(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash){
-        String rpta = productoService.eliminarProducto(id);
+        String rpta = pedidoService.eliminarPedido(id);
         flash.addFlashAttribute("mensaje", rpta);
-        return "redirect:/producto/";
+        return "redirect:/pedido/";
     }
 }

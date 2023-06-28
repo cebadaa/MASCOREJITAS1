@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head th:replace="layouts/plantilla :: cabecera">
+
+    </head>
+<body>
+    <div th:replace="layouts/plantilla :: barra">
+        
+    </div>
+
+    <section class="home">
+        <div class="homecont">
+            <i class='bx bx-menu' ></i>
+        </div>
+        <main>
+            <div class="container-fluid px-4">
+                
+                <div class="alert alert-warning alert-dismissible fade show" th:if="${mensaje != null}" role="alert">
+                    <span th:text="${mensaje}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                <form th:action="@{/pedido/form}" th:object="${pedido}" method="post">
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            Registrar Pedidos
+                        </div>    
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Cliente</label>
+                                    <select class="form-select" th:field="*{cliente.id}">
+                                        <option value="">Seleccione una opcion:</option>
+                                        <option th:each="item: ${listaClientes}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa-solid fa-floppy-disk"></i>
+                                        Guardar Pedido</button>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </form>
+                <div class="card mt-5">
+                    <div class="card-header">
+                        Pedidos Registrados
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Fecha</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item: ${listaPedidos}">
+                                    <td th:text="${item.cliente.nombre}"></td>
+                                    <td th:text="${item.fecha}"></td>
+                                    <td class="text-center">
+                                        <a href="#" class="btn btn-warning editarPedido"
+                                            th:data-id="${item.id}"
+                                            th:data-cliente="${item.cliente.id}">
+                                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a th:href="@{/pedido/eliminar/} + ${item.id}" class="btn btn-danger"
+                                            onclick="return confirm('¿Desea eliminar el pedido?')">
+                                            <i class="fa-solid fa-trash-can"></i> Eliminar
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        </section>
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="modalEditarP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Pedido</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/pedido/form}" th:object="${pedido}" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" th:field="*{id}"/>
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label>Cliente:</label>
+                                <select class="form-select" name="cliente.id" id="cboCliente">
+                                    <option value="">Seleccione una opción:</option>
+                                    <option th:each="item: ${listaClientes}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+    <div th:replace="layouts/plantilla :: librerias">
+
+    </div>
+    <script type="text/javascript" th:src="@{/js/pedido1.js}"></script>
+</body>
+</html>
