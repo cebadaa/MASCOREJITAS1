@@ -13,7 +13,7 @@ public class PanelController {
     //localhost:8080/
     @Autowired
     private IProductoService productoService;
-    @RequestMapping(value = {"/dashboard"})
+    @RequestMapping(value = {"/dashboard/"})
     public String panel(){
         return "dashboard";
     }
@@ -22,7 +22,7 @@ public class PanelController {
     public String inicio(){
         return "index";
     }
-    @RequestMapping("/login")
+    @RequestMapping("/autenticacion")
     public String login(){
         return "login";
     }
