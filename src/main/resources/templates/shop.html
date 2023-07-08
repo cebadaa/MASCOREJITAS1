@@ -107,7 +107,7 @@
         </h2>
       </div>
       <div class="brand_container layout_padding2">
-      <div class="col-sm-3" th:each="item: ${listarTrabajador}">  
+      <div class="col-sm-3" th:each="item: ${listarProducto}">  
         <div class="box">
           <a href="">
             <div class="new">
@@ -119,7 +119,7 @@
               <img src="images/slider-img.png" alt="">
             </div>
             <div class="detail-box">
-              <h6 class="price" th:text="${item.salario}">
+              <h6 class="price" th:text="${item.precio}">
                 S/.20
               </h6>
               <h6 th:text="${item.nombre}">
