@@ -37,6 +37,7 @@ public class UserService implements UserDetailsService{
         for(Rol item: usuario.getRoles()){
             listaRoles.add(new SimpleGrantedAuthority(item.getAuthority()));
         }
-        return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, listaRoles);
+        return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), 
+        true, true, true, listaRoles);
     }
 }
