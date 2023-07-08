@@ -27,6 +27,8 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <link href="css/shop.css" rel="stylesheet" />
 </head>
 
 <body class="sub_page">
@@ -95,8 +97,6 @@
     <!-- end header section -->
   </div>
 
-
-
   <!-- brand section -->
 
   <section class="brand_section layout_padding">
@@ -129,12 +129,65 @@
           </a>
         </div>
       </div>
+
+      <div class="col">
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="images/t-2.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Super-Cat</h4>
+            <p class="card-text">Precio: S/28.00</p>
+            <a href="#" data-name="Super-Cat" data-price="28.00" class="add-to-cart btn btn-primary">Añadir al Carrito</a>
+          </div>
+        </div>
       </div>
-      <a href="" class="brand-btn">
-        Ver Mas
-      </a>
+
+      <div class="col">
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="images/t-4.jpg" alt="Card image cap">
+          <div class="card-block">
+            <h4 class="card-title">Brit</h4>
+            <p class="card-text">Precio: S/40.00</p>
+            <a href="#" data-name="Brit" data-price="40.00" class="add-to-cart btn btn-primary">Añadir al Carrito</a>
+          </div>
+          </div>
+      </div>
     </div>
-  </section>
+  </div>
+
+        <!-- Nav -->
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Carrito (<span class="total-count"></span>)</button>
+            <button class="clear-cart btn btn-danger">Limpiar Carrito</button>
+          </div>
+        </div>
+
+        <br><br>      
+
+  <!-- Modal -->
+  <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Carrito</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="show-cart table">
+            
+          </table>
+          <div>Total precio: S/<span class="total-cart"></span></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Nuevo Pedido</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
 
   <!-- end brand section -->
 
@@ -284,6 +337,7 @@
 
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="js/shop.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js">
   </script>
