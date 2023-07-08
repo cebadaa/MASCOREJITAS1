@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cva.proyecto.model.entidad.Producto;
 import com.cva.proyecto.model.service.ICategoriaService;
@@ -26,7 +25,7 @@ public class ProductoController {
     public String inicio(Model model){
         Producto producto = new Producto();
         model.addAttribute("producto", producto);
-        model.addAttribute("listaProductos", productoService.listarProductos());
+        model.addAttribute("listaProductos", productoService.mostrarProductos());
         /*Metodo Spring */
         model.addAttribute("listaCategorias", categoriaService.mostrarCatOrdenAsc());
         return "producto/index";
@@ -39,9 +38,8 @@ public class ProductoController {
     }
 
     @RequestMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash){
-        String rpta = productoService.eliminarProducto(id);
-        flash.addFlashAttribute("mensaje", rpta);
+    public String eliminar(@PathVariable(value = "id") Long id){
+        productoService.eliminarProducto(id);
         return "redirect:/producto/";
     }
 }

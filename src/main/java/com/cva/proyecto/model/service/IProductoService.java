@@ -6,6 +6,8 @@ import com.cva.proyecto.model.entidad.Producto;
 
 public interface IProductoService {
     public void guardarProducto(Producto producto);
-    public List<Producto> listarProductos();
-    public String eliminarProducto(Long id);
+    public List<Producto> mostrarProductos();
+    public void eliminarProducto(Long id);
+    public List<Producto> mostrarProOrdenAsc();
+    public Producto buscarProducto(Long id);
 }

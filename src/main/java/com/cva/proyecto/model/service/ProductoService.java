@@ -19,20 +19,23 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<Producto> listarProductos() {
+    public void eliminarProducto(Long id) {
+        productoDAO.deleteById(id);
+    }
+
+    @Override
+    public List<Producto> mostrarProductos() {
+        return (List<Producto>)productoDAO.findAll();
+    }
+
+    @Override
+    public List<Producto> mostrarProOrdenAsc() {
         return productoDAO.findAllByOrderByNombreAsc();
     }
 
     @Override
-    public String eliminarProducto(Long id) {
-        String rpta = "";
-        try{
-            productoDAO.deleteById(id);
-            rpta = "Se eliminó el producto correctamente";
-        }catch(Exception e ){
-            rpta = e.getMessage();
-        }
-        return rpta;
+    public Producto buscarProducto(Long id) {
+        return productoDAO.findById(id).orElse(null);
     }
     
 }

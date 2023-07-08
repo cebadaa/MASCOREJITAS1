@@ -19,20 +19,23 @@ public class PedidoServiceImp implements IPedidoService{
     }
 
     @Override
-    public List<Pedido> listarPedidos() {
+    public void eliminarPedido(Long id) {
+        pedidoDAO.deleteById(id);
+    }
+
+    @Override
+    public List<Pedido> mostrarPedidos() {
+        return (List<Pedido>)pedidoDAO.findAll();     
+    }
+
+    @Override
+    public List<Pedido> mostrarPeOrdenAsc() {
         return pedidoDAO.findAllByOrderByFechaAsc();
     }
 
     @Override
-    public String eliminarPedido(Long id) {
-        String rpta = "";
-        try{
-            pedidoDAO.deleteById(id);
-            rpta = "Se eliminó el pedido correctamente";
-        }catch(Exception e ){
-            rpta = e.getMessage();
-        }
-        return rpta;
+    public Pedido buscarPedido(Long id) {
+        return pedidoDAO.findById(id).orElse(null);
     }
     
 }

@@ -20,18 +20,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
 
-                <form th:action="@{/producto/form}" th:object="${producto}" method="post">
+                <form th:action="@{/detalle/form}" th:object="${detalle}" method="post">
                     <div class="card mt-3">
                         <div class="card-header">
-                            Registrar Productos
+                            Registrar Detalles
                         </div>    
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label>Categoria</label>
-                                    <select class="form-select" th:field="*{categoria.id}">
-                                        <option value="">Seleccione una opcion:</option>
-                                        <option th:each="item: ${listaCategorias}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                    <label>Pedido</label>
+                                    <select class="form-select" th:field="*{pedido.id}">
+                                        <option value="">Seleccione un pedido:</option>
+                                        <option th:each="item: ${listaPedidos}" th:value="${item.id}" th:text="${item.fecha}"></option>
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
@@ -40,8 +40,20 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label>Nombre del Producto:</label>
-                                    <input th:field="*{nombre}" type="text" placeholder="Ingrese Nombre" class="form-control">
+                                    <label>Producto</label>
+                                    <select class="form-select" th:field="*{producto.id}">
+                                        <option value="">Seleccione una opcion:</option>
+                                        <option th:each="item: ${listaProductos}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Introducir Cantidad:</label>
+                                    <input th:field="*{cantidad}" type="text" placeholder="Ingrese Cantidad" class="form-control">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label>Precio del producto:</label>
@@ -52,7 +64,7 @@
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-success">
                                         <i class="fa-solid fa-floppy-disk"></i>
-                                        Guardar Producto</button>
+                                        Guardar Detalle</button>
                                 </div>
                             </div>
                         </div>  
@@ -60,36 +72,39 @@
                 </form>
                 <div class="card mt-5">
                     <div class="card-header">
-                        Productos Registrados
+                        Detalles Registrados
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>Categoria</th>
-                                    <th>Nombre</th>
+                                    <th>Pedido</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
                                     <th>Precio</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="item: ${listaProductos}">
-                                    <td th:text="${item.categoria.nombre}"></td>
-                                    <td th:text="${item.nombre}"></td>
+                                <tr th:each="item: ${listaDetalles}">
+                                    <td th:text="${item.pedido.fecha}"></td>
+                                    <td th:text="${item.producto.nombre}"></td>
+                                    <td th:text="${item.cantidad}"></td>
                                     <td th:text="${item.precio}"></td>
                                     <td class="text-center">
-                                        <a href="#" class="btn btn-warning editarProducto"
+                                        <a href="#" class="btn btn-warning editarDetalle"
                                             th:data-id="${item.id}"
-                                            th:data-categoria="${item.categoria.id}"
-                                            th:data-nombre="${item.nombre}"
+                                            th:data-pedido="${item.pedido.id}"
+                                            th:data-producto="${item.producto.id}"
+                                            th:data-nombre="${item.cantidad}"
                                             th:data-precio="${item.precio}">
                                             <i class="fa-solid fa-pen-to-square"></i> Editar
                                         </a>
                                     </td>
                                     <td class="text-center">
-                                        <a th:href="@{/producto/eliminar/} + ${item.id}" class="btn btn-danger"
-                                            onclick="return confirm('¿Desea eliminar el producto?')">
+                                        <a th:href="@{/detalle/eliminar/} + ${item.id}" class="btn btn-danger"
+                                            onclick="return confirm('¿Desea eliminar el detalle?')">
                                             <i class="fa-solid fa-trash-can"></i> Eliminar
                                         </a>
                                     </td>
@@ -108,30 +123,39 @@
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Producto</h1>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Detlle</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form th:action="@{/producto/form}" th:object="${producto}" method="post">
+                <form th:action="@{/detalle/form}" th:object="${detalle}" method="post">
                     <div class="modal-body">
                         <input type="hidden" th:field="*{id}"/>
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label>Categoría:</label>
-                                <select class="form-select" name="categoria.id" id="cboCategoria">
+                                <label>Pedido:</label>
+                                <select class="form-select" name="pedido.id" id="cboPedido">
                                     <option value="">Seleccione una opción:</option>
-                                    <option th:each="item: ${listaCategorias}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                    <option th:each="item: ${listaPedidos}" th:value="${item.id}" th:text="${item.fecha}"></option>
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label>Nombre del producto:</label>
-                                <input type="text" name="nombre" id="txtNombre" class="form-control"/>
+                                <label>Producto:</label>
+                                <select class="form-select" name="producto.id" id="cboProducto">
+                                    <option value="">Seleccione una opción:</option>
+                                    <option th:each="item: ${listaProductos}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                                </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 mb-3">
-                                <label>Precio del producto:</label>
+                                <label>Ingrese Cantidad:</label>
+                                <input type="text" name="cantidad" id="txtCantidad" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label>Ingrese Precio:</label>
                                 <input type="text" name="precio" id="txtPrecio" class="form-control"/>
                             </div>
                         </div>
@@ -150,6 +174,6 @@
     <div th:replace="layouts/plantilla :: librerias">
 
     </div>
-    <script type="text/javascript" th:src="@{/js/producto.js}"></script>
+    <script type="text/javascript" th:src="@{/js/detalle.js}"></script>
 </body>
 </html>

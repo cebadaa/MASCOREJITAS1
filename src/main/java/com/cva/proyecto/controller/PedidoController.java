@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cva.proyecto.model.entidad.Pedido;
 import com.cva.proyecto.model.service.IClienteService;
@@ -24,7 +23,7 @@ public class PedidoController {
     public String inicio(Model model){
         Pedido pedido = new Pedido();
         model.addAttribute("pedido", pedido);
-        model.addAttribute("listaPedidos", pedidoService.listarPedidos());
+        model.addAttribute("listaPedidos", pedidoService.mostrarPedidos());
         /*Metodo Spring */
         model.addAttribute("listaClientes", clienteService.mostrarCliOrdenAsc());
         return "pedido/index";
@@ -37,9 +36,8 @@ public class PedidoController {
     }
 
     @RequestMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash){
-        String rpta = pedidoService.eliminarPedido(id);
-        flash.addFlashAttribute("mensaje", rpta);
+    public String eliminar(@PathVariable(value = "id") Long id){
+        pedidoService.eliminarPedido(id);
         return "redirect:/pedido/";
     }
 }
