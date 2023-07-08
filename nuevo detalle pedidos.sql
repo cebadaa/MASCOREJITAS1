@@ -70,13 +70,13 @@ create table roles(
 	foreign key (id_roles) references usuarios(id_usuarios)
 );
 
-INSERT INTO usuarios VALUES ('admin', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Julieth', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Christian', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Sebastian', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Pether', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Felix', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
-INSERT INTO usuarios VALUES ('Luis', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('admin', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Julieth', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Christian', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Sebastian', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Pether', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Felix', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
+INSERT INTO usuarios VALUES ('Luis', '$2a$12$MLT6ytvxwB03Bdi2QHYSM.TVd/0h17lKmREEiKnrUWTQfcthcf0v.',1);
 
 INSERT INTO roles VALUES(1, 'ROLES_ADMIN');
 INSERT INTO roles VALUES(1, 'ROLES_USER');
