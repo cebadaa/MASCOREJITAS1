@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class Usuario implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+        private Long id_usuarios;
         private String username;
         private String password;
         private Boolean enabled;
@@ -27,8 +27,46 @@ public class Usuario implements Serializable {
         @JoinColumn(name = "user_id")
         private List<Rol> roles;
 
-        public Long getId() {
-                return id;
+        public Long getId_usuarios() {
+                return id_usuarios;
         }
+
+        public void setId_usuarios(Long id_usuarios) {
+                this.id_usuarios = id_usuarios;
+        }
+
+        public String getUsername() {
+                return username;
+        }
+
+        public void setUsername(String username) {
+                this.username = username;
+        }
+
+        public String getPassword() {
+                return password;
+        }
+
+        public void setPassword(String password) {
+                this.password = password;
+        }
+
+        public Boolean getEnabled() {
+                return enabled;
+        }
+
+        public void setEnabled(Boolean enabled) {
+                this.enabled = enabled;
+        }
+
+        public List<Rol> getRoles() {
+                return roles;
+        }
+
+        public void setRoles(List<Rol> roles) {
+                this.roles = roles;
+        }
+
+
 
 }
