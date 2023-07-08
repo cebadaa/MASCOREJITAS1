@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authenticati
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,8 +43,8 @@ public class SpringSecurityConfig {
     }
 
     @Autowired
-    public void criptografiaPassword(AuthenticationManager auth) throws Exception{
-        auth.userdetailsService(userService).passwordEncoder(encriptarPassword());
+    public void criptografiaPassword(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userService).passwordEncoder(encriptarPassword());
     }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception{

@@ -24,7 +24,7 @@ public class PanelController {
     }
     @RequestMapping("/autenticacion")
     public String login(){
-        return "login";
+        return "logueo";
     }
     @RequestMapping("/nosotros")
     public String nosotros(){
