@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
         private Boolean enabled;
 
         @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        @JoinColumn(name = "user_id")
+        @JoinColumn(name = "id_usuarios")
         private List<Rol> roles;
 
         public Long getId_usuarios() {

@@ -45,7 +45,7 @@ public class SpringSecurityConfig {
         http.authorizeHttpRequests()
         .requestMatchers("/*","/autenticacion*").permitAll()
         .anyRequest().authenticated()
-        .and().formLogin().loginPage("/autenticacion").defaultSuccessUrl("/dashboard",true).permitAll()
+        .and().formLogin().loginPage("/autenticacion").defaultSuccessUrl("/dashboard/",true).permitAll()
         .and().logout().permitAll();
         return http.build();
     }
