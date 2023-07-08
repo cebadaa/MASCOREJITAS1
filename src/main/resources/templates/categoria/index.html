@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head th:replace="layouts/plantilla :: cabecera">
+
+    </head>
+<body>
+    <div th:replace="layouts/plantilla :: barra">
+        
+    </div>
+
+    <section class="home">
+        <div class="homecont">
+            <i class='bx bx-menu' ></i>
+        </div>
+        <main>
+            <div class="container-fluid px-4">
+                <div class="card mt-4">
+                    <div class="card-header">
+                      <span th:text="${titulo}"></span>
+                    </div>
+                    <form th:action="@{/categoria/guardar}" th:object="${categoria}" method="post">
+                        <div class="card-body">
+                        <input type="hidden" th:field="*{id}"/>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label>Nombre de la Categoria:</label>
+                                <input th:field="*{nombre}" type="text" class="form-control" placeholder="Ingrese el nombre">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-secondary" onclick="limpiarCategoria();">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Nueva Categoria</button>
+                                <button type="submit" class="btn btn-success">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Guardar Categoria</button>
+                            </div>
+                        </div>
+                        </div>    
+                    </form>
+                    
+                  </div>
+                  <br><br>
+                  <div class="card">
+                    <div class="card-header">
+                        Categorias Registradas
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item: ${listacategoria}">
+                                        <!--Nombre de las categorias-->
+                                        <td th:text="${item.nombre}"></td>
+                                        <td class="text-center">
+                                            <a th:href="@{/categoria/mostrarEditar/} + ${item.id}" class="btn btn-warning">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                                Editar</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a th:href="@{/categoria/eliminar/} + ${item.id}" class="btn btn-danger"
+                                            onclick="return confirm('Desea Eliminar la Categoria?')">
+                                                <i class="fa-solid fa-trash"></i>
+                                                Eliminar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+        </main>
+        </section>
+    <div th:replace="layouts/plantilla :: librerias">
+
+    </div>
+    <script th:src="@{/js/libreriaTodo.js}"></script> 
+
+</body>
+</html>

@@ -24,13 +24,18 @@ public class ClienteServiceImp implements IClienteService {
     }
 
     @Override
-    public void eliminarCliente(Cliente cliente) {
-        clientesDao.delete(cliente);
+    public void eliminarCliente(Long id) {
+        clientesDao.deleteById(id);
     }
 
     @Override
     public Cliente buscarCliente(Long id) {
         return clientesDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Cliente> mostrarCliOrdenAsc() {
+        return clientesDao.findAllByOrderByNombreAsc();
     }
     
 }

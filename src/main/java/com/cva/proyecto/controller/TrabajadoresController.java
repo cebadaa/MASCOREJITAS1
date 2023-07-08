@@ -13,31 +13,33 @@ import com.cva.proyecto.model.service.ITrabajadorService;
 @RequestMapping("/trabajadores")
 public class TrabajadoresController {
     @Autowired
-    private ITrabajadorService trabajadorService;
+    private ITrabajadorService iTrabajadorService;
+
     @RequestMapping("/")
     public String inicio(Model model){
         Trabajador trabajador=new Trabajador();
         model.addAttribute("trabajador", trabajador);
-        model.addAttribute("listarTrabajador", trabajadorService.mostrarTrabajador());
+        model.addAttribute("titulo", "Registrar Nuevo Trabajador");
+        model.addAttribute("listarTrabajador", iTrabajadorService.mostrarTrabajador());
         return "trabajadores/index";
     }
     @RequestMapping("/guardar")
     public String guardar(Trabajador trabajador){
-        trabajadorService.guardarTrabajador(trabajador);
+        iTrabajadorService.guardarTrabajador(trabajador);
         return "redirect:/trabajadores/";
     }
     @RequestMapping("/eliminar/{id}")
     public String eliminar(Trabajador trabajador){
-        trabajadorService.eliminarTrabajador(trabajador);
+        iTrabajadorService.eliminarTrabajador(trabajador);
         return "redirect:/trabajadores/";
     }
     @RequestMapping("/editar/{id}")
     public String editar(@PathVariable(value = "id") Long id, Model model){
         Trabajador trabajador = new Trabajador();
-        trabajador = trabajadorService.buscarTrabajador(id);
+        trabajador = iTrabajadorService.buscarTrabajador(id);
         model.addAttribute("trabajador", trabajador);
         model.addAttribute("titulo", "Editar Trabajador");
-        model.addAttribute("listarTrabajador", trabajadorService.mostrarTrabajador());
+        model.addAttribute("listarTrabajador", iTrabajadorService.mostrarTrabajador());
         return "trabajadores/index";
     }
 }

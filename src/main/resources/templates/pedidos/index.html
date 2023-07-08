@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterar sobre las compras y mostrar los datos en filas de la tabla -->
+            <c:forEach items="${compras}" var="compra">
+                <tr>
+                    <td>${compra.producto}</td>
+                    <td>${compra.cantidad}</td>
+                    <td>${compra.fecha}</td>
+                    <td>
+                        <a href="/dashboard/eliminar/${compra.id}">Eliminar</a>
+                        <a href="/dashboard/editar/${compra.id}">Editar</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
+</html>

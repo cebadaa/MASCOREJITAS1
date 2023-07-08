@@ -10,64 +10,64 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
-
 @Entity
-@Table(name="productos")
-public class Producto implements Serializable {
+@Table(name="detalle_pedido")
+public class Detalle implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_pro")
+    @Column(name="id_detalle")
     private Long id;
-    @Column(name="nombre_pro")
-    private String nombre;
-    @Column(name="precio_pro")
+    @Column(name="cantidad")
+    private Float cantidad;
+    @Column(name="precio")
     private Float precio;
 
+    @ManyToOne
+    @JoinColumn(name="id_pedidos")
+    Pedido pedido;
 
     @ManyToOne
-    @JoinColumn(name="id_cat")
-    Categoria categoria;
-
+    @JoinColumn(name="id_pro")
+    Producto producto;
 
     public Long getId() {
         return id;
     }
 
-
     public void setId(Long id) {
         this.id = id;
     }
 
-
-    public String getNombre() {
-        return nombre;
+    public Float getCantidad() {
+        return cantidad;
     }
 
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantidad(Float cantidad) {
+        this.cantidad = cantidad;
     }
-
 
     public Float getPrecio() {
         return precio;
     }
 
-
     public void setPrecio(Float precio) {
         this.precio = precio;
     }
 
-
-    public Categoria getCategoria() {
-        return categoria;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
     
 }

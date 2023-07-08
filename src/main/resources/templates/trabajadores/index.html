@@ -12,13 +12,14 @@
         <div class="homecont">
             <i class='bx bx-menu' ></i>
         </div>
-        <div class="container">
+        <div class="container-fluid px-4">
             <div class="card">
                 <div class="card-header" style="background-color: #9264d6; color: white;">
-                Registrar Trabajadores
+                    <span th:text="${titulo}"></span>
                 </div>
                 <form th:action="@{/trabajadores/guardar}" th:object="${trabajador}" method="post">
                     <div class="card-body">
+                        <input type="hidden" th:field="*{id}">
                         <div class="row">
                         <div class="col-md-4 mb-3">
                             <label>Nombre del Trabajador:</label>
@@ -34,11 +35,12 @@
                         </div>
                         </div>
                         <div class="row mt-3">
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-success" style="background-color: #baa1e2;">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                                Guardar Trabajador</button>
-                        </div>
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn " onclick="limpiarTrabajador();" style="background-color: #baa1e2;"> Nuevo Trabajador</button>
+                                <button type="submit" class="btn " style="background-color: #baa1e2;">
+                                    <i class="fa-solid fa-floppy-disk"></i>
+                                    Guardar Trabajador</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -56,6 +58,8 @@
                                     <th>Nombre</th>
                                     <th>Cargo</th>
                                     <th>Sueldo</th>
+                                    <th class="text-center">Editar</th>
+                                    <th class="text-center">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,6 +67,8 @@
                                     <td th:text="${item.nombre}"></td>
                                     <td th:text="${item.cargo}"></td>
                                     <td th:text="${item.salario}"></td>
+                                    <td class="text-center"><a th:href="@{/trabajadores/editar/} + ${item.id}" class="btn" style="background-color: #84c4e9;">Editar</a> </td>
+                                    <td class="text-center"><a th:href="@{/trabajadores/eliminar/} + ${item.id}" class="btn " style="background-color: #e93535; color: white;" onclick="return confirm('Desea eliminar al trabajador')">Eliminar</a> </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,6 +80,6 @@
     <div th:replace="layouts/plantilla :: librerias">
 
     </div>
-
+    <script th:src="@{/js/libreriaTodo.js}"></script> 
 </body>
 </html>

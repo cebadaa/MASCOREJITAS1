@@ -18,6 +18,7 @@ public class ClientesController {
     public String inicio(Model model){
         Cliente cliente=new Cliente();
         model.addAttribute("cliente", cliente);
+        model.addAttribute("titulo", "Registrar Nuevo Cliente");
         model.addAttribute("listarClientes", clienteService.mostrarClientes());
         return "clientes/index";
     }
@@ -27,8 +28,8 @@ public class ClientesController {
         return "redirect:/clientes/";
     }
     @RequestMapping("/eliminar/{id}")
-    public String eliminar(Cliente cliente){
-        clienteService.eliminarCliente(cliente);
+    public String eliminar(@PathVariable(value = "id") Long id){
+        clienteService.eliminarCliente(id);
         return "redirect:/clientes/";
     }
     @RequestMapping("/editar/{id}")

@@ -8,7 +8,8 @@ public interface IClienteService {
     public void guardarCliente(Cliente clientes);
     public Cliente buscarCliente(Long id);
     public List<Cliente> mostrarClientes();
-    public void eliminarCliente(Cliente clientes);
+    public void eliminarCliente(Long id);
+    public List<Cliente> mostrarCliOrdenAsc();
 
 
 

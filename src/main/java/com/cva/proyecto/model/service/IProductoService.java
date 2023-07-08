@@ -1,9 +1,13 @@
 package com.cva.proyecto.model.service;
 
-import com.cva.proyecto.model.entidad.Cliente;
-import com.cva.proyecto.model.entidad.Trabajador;
+import java.util.List;
+
+import com.cva.proyecto.model.entidad.Producto;
 
 public interface IProductoService {
-    public void guardarTrabajador(Trabajador trabajador);
-    public void guardarCliente(Cliente cliente);
+    public void guardarProducto(Producto producto);
+    public List<Producto> mostrarProductos();
+    public void eliminarProducto(Long id);
+    public List<Producto> mostrarProOrdenAsc();
+    public Producto buscarProducto(Long id);
 }

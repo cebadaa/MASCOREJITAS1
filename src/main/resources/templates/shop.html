@@ -12,7 +12,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Digitf</title>
+  <title>Productos</title>
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -106,18 +106,27 @@
           Productos
         </h2>
       </div>
-
-  <!-- Main -->
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="images/t-1.jpg" alt="Card image cap">
-          <div class="card-block">
-            <h4 class="card-title">Nutrican</h4>
-            <p class="card-text">Precio: S/30.00</p>
-            <a href="#" data-name="Nutrican" data-price="30.00" class="add-to-cart btn btn-primary">Añadir al Carrito</a>
-          </div>
+      <div class="brand_container layout_padding2">
+      <div class="col-sm-3" th:each="item: ${listarProducto}">  
+        <div class="box">
+          <a href="">
+            <div class="new">
+              <h5>
+                Estado
+              </h5>
+            </div>
+            <div class="img-box">
+              <img src="images/slider-img.png" alt="">
+            </div>
+            <div class="detail-box">
+              <h6 class="price" th:text="${item.precio}">
+                S/.20
+              </h6>
+              <h6 th:text="${item.nombre}">
+                Chair
+              </h6>
+            </div>
+          </a>
         </div>
       </div>
 
@@ -211,7 +220,7 @@
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-                +Numero Telf
+                Numero Telefono
               </p>
             </div>
             <div>
