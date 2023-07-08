@@ -3,7 +3,6 @@ package com.cva.proyecto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -38,15 +37,6 @@ public class SpringSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public static BCryptPasswordEncoder encriptarPassword(){
-        return new BCryptPasswordEncoder();
-    }
-
-    @Autowired
-    public void criptografiaPassword(AuthenticationManager auth) throws Exception{
-        auth.userdetailsService(userService).passwordEncoder(encriptarPassword());
-    }
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() throws Exception{
         return (web) -> web.ignoring().requestMatchers("/css/**","/js/**","/img/**","/lib/**","/index");
