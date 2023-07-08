@@ -17,7 +17,6 @@ create table productos(
     foreign key (id_cat) references categorias(id_cat)
 );
 
-
 create table clientes(
     id_cli int IDENTITY(1,1) primary key,
     nombre_cli varchar(200),
@@ -32,6 +31,7 @@ create table pedidos(
     id_cli int,
     foreign key (id_cli) references clientes(id_cli)
 );
+
 create table detalle_pedido(
     id_detalle int IDENTITY(1,1) primary key,
     cantidad decimal(18,2),
@@ -41,6 +41,7 @@ create table detalle_pedido(
 	foreign key (id_pedidos) references pedidos(id_pedidos),
 	foreign key (id_pro) references productos(id_pro)
 );
+
 create table trabajadores(
     id_traba int IDENTITY(1,1) primary key,
     nombre_traba varchar(200),
@@ -54,4 +55,38 @@ create table proveedores(
     direccion_prov varchar(200),
     telefono_prov varchar(200)
 );
-select *from trabajadores
+
+create table usuarios(
+	id_usuarios int IDENTITY(1,1) primary key,
+	username varchar(200),
+	password varchar(200),
+	enabled tinyint
+);
+
+create table roles(
+	id_roles int IDENTITY(1,1) primary key,
+	id_usuarios int,
+	authority varchar(200)
+	foreign key (id_roles) references usuarios(id_usuarios)
+);
+
+INSERT INTO usuarios VALUES ('admin', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Julieth', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Christian', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Sebastian', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Pether', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Felix', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+INSERT INTO usuarios VALUES ('Luis', '$2a$12$YnzXTvXd2PL8lWpYB4KFG.0kZLhpkNshBUEcLDprZQE/heDun0OOS',1);
+
+INSERT INTO roles VALUES(1, 'ROLES_ADMIN');
+INSERT INTO roles VALUES(1, 'ROLES_USER');
+INSERT INTO roles VALUES(2, 'ROLES_USER');
+INSERT INTO roles VALUES(3, 'ROLES_USER');
+INSERT INTO roles VALUES(4, 'ROLES_USER');
+INSERT INTO roles VALUES(5, 'ROLES_USER');
+INSERT INTO roles VALUES(6, 'ROLES_USER');
+
+select * from usuarios 
+select * from roles
+
+select * from trabajadores
